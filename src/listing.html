@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Recipe Book</title>
     <link rel="stylesheet" href="listing.css">
+        <link rel="stylesheet" href="addRecipe.css">
 </head>
 <body>
     <header>
@@ -19,11 +20,23 @@
             <option value="dinner">Dinner</option>
         </select>
     </div>
+        <div class="add-recipe">
+            <form class="form" id="form">
+                    <input name="title" placeholder="title"/>
+                    <input name="ingredients" placeholder="ingredient" />
+                    <input name="instructions" placeholder="instruction" />
+                    <input name="categories" placeholder="Categories"/>
+                    <input name="imageUrl" placeholder="imageUrl" />
+                    <button >
+                        add Recipe
+                    </button>
+                </form >
+        </div>
     <main id="recipe-container">
         <!-- Recipe cards will be dynamically added here -->
     </main>
 
-
+    
     <script src="recipe.js"></script>
     <script src="listing.js"></script>
 </body>

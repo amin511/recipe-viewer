@@ -24,3 +24,40 @@ function displayRecipes() {
 
 // Initial display of recipes when the page loads
 window.onload = displayRecipes;
+
+const form = document.getElementById("form");
+form.addEventListener("submit", function (e) {
+    e.preventDefault();
+    let formData = {};
+
+    // Iterate through form elements
+    for (let i = 0; i < form.elements.length; i++) {
+        const element = form.elements[i];
+
+        // Check if the element is an input or textarea
+        if (element.tagName === "INPUT" || element.tagName === "TEXTAREA") {
+            if (element.name === "categories" || element.name === "ingredients") {
+
+                formData[element.name] = [element.value];
+
+            }
+            else {
+                formData[element.name] = element.value;
+            }
+            if (element.name === 'imageUrl') {
+                formData[element.name] = "./images/openSOurce.jpg"
+            }
+            // Add the input's name and value to formData object
+        }
+    }
+    formData = {
+        ...formData, id: Math.floor(Math.random() * 100)
+    }
+    console.log(formData);
+    let recipes = JSON.parse(localStorage.getItem("recipes")) || [];
+    console.log(recipes);
+    recipes.push(formData);
+    localStorage.setItem("recipes", JSON.stringify(recipes));
+    
+    displayRecipes();
+});
